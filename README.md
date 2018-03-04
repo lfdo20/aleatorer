@@ -1,67 +1,88 @@
-# Project Title
+# Aleatorer
+[![Build Status](https://www.travis-ci.org/lfdo20/aleatorer.svg?branch=master)](https://www.travis-ci.org/lfdo20/aleatorer)
+[![Coverage Status](https://coveralls.io/repos/github/lfdo20/aleatorer/badge.svg?branch=master)](https://coveralls.io/github/lfdo20/aleatorer?branch=master)
 
-Aleatorer is an leveled randomization algorithm making sure that all data are used and randomically choosen. This is done by dividing and monitoring data in 4 groups where only the last positions are avaliable for random selection.
-
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Aleatorer is an leveled randomization algorithm where all data are used and randomically choosen. This is done by dividing and monitoring data in 4 groups where only the last positions are avaliable for random selection. It works without change the original database, creating a reference file to constantly monitor the randomization process.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+This library is a server application based on [node.js](https://nodejs.org/en/), and use the FileSystem module (fs) to deal with data files.
+Make sure you have node installed.
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+Just :
 
-Say what the step will be
-
-```
-Give the example
+```sh
+$ npm install aleatorer --save
 ```
 
-And repeat
+## How to use
 
-```
-until finished
-```
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-End with an example of getting some data out of the system or using it for a little demo
+### ES6
 
-## Running the tests
+```js
+// to import a specific method
+import { Aleatorer } from 'aleatorer';
 
-Explain how to run the automated tests for this system
+const aleatorer = new Aleatorer({
+  id: 'ID_OF_DATA',
+  baseData: 'DATA_VARIABLE',
+});
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+// loading method
+aleatorer.loader();
 ```
 
-## Deployment
+### CommonJS
 
-Add additional notes about how to deploy this on a live system
+```js
+var aleatorer = require('aleatorer').default;
 
-## Built With
+var aleatorer = new Aleatorer({
+  id: 'ID_OF_DATA',
+  baseData: 'DATA_VARIABLE',
+});
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+```
+
+After that the library will be available to the Global as `Aleatorer`. Follow an example:
+
+## Methods
+
+> Follow the methods that the library provides.
+
+### aleatorer.loader();
+
+> Loads the original data in the library. If its the first time, `loader` will create a file like `aldata_ID_OF_DATA.json`. Make sure this file is saved anywhere else in case of using a non-persistent server as Heroku. If its not the first load of data, `loader` just load the file information.
+
+**Example**
+
+```js
+aleatorer.loader();
+```
+
+### aleatorer.adder();
+
+> Loads the original data in the library. If its the first time, `loader` will create a file like `aldata_ID_OF_DATA.json`. Make sure this file is saved anywhere else in case of using a non-persistent server as Heroku. If its not the first load of data, `loader` just load the file information.
+
+**Arguments**
+
+| Argument | Type    | Options           |
+|----------|---------|-------------------|
+|`query`   |*string* | 'Any search query'|
+
+
+**Example**
+
+```js
+spotify.search.album('Incubus')
+  .then(data => {
+    // do what you want with the data
+  })
+```
 
 ## Contributing
 

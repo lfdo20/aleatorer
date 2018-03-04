@@ -1,7 +1,7 @@
 {
   "name": "aleatorer",
-  "version": "1.0.0",
-  "description": "An equilibrated randomization algorithm with data leveling.",
+  "version": "1.0.1",
+  "description": "An independent randomization algorithm with data leveling.",
   "main": "lib/aleatorer.js",
   "scripts": {
     "clear": "rimraf lib",
