@@ -1,6 +1,6 @@
 {
   "name": "aleatorer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An independent randomization algorithm with data leveling.",
   "main": "lib/aleatorer.js",
   "scripts": {
@@ -10,10 +10,12 @@
     "build:umd": "./node_modules/.bin/webpack --output-filename aleatorer.umd.js",
     "build:umd:min": "./node_modules/.bin/webpack --output-filename aleatorer.umd.min.js",
     "watch": "npm run build -- --watch",
+    "lint": "./node_modules/.bin/eslint src/*.js",
     "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
     "testw": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
     "test:coverage": "nyc npm test",
-    "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls",
+    "prepush": "npm run lint && npm run test:coverage"
   },
   "files": [
     "lib"
