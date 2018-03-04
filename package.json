@@ -1,0 +1,64 @@
+{
+  "name": "aleatorer",
+  "version": "1.0.0",
+  "description": "An equilibrated randomization algorithm with data leveling.",
+  "main": "lib/aleatorer.js",
+  "scripts": {
+    "clear": "rimraf lib",
+    "bbuild": "./node_modules/.bin/babel --out-dir lib src",
+    "build": "npm run clear && npm run bbuild",
+    "build:umd": "./node_modules/.bin/webpack --output-filename aleatorer.umd.js",
+    "build:umd:min": "./node_modules/.bin/webpack --output-filename aleatorer.umd.min.js",
+    "watch": "npm run build -- --watch",
+    "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
+    "testw": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
+    "test:coverage": "nyc npm test"
+  },
+  "files": [
+    "lib"
+  ],
+  "nyc": {
+    "functions": 80,
+    "lines": 80,
+    "check-coverage": true,
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": "tests/**"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lfdo20/aleatorer.git"
+  },
+  "keywords": [
+    "algorithm",
+    "randomizer",
+    "random",
+    "javascript"
+  ],
+  "author": "Leandro Fernandes lfdo <lfdo20@gmail.com> (https://lfdo20.github.io/lfdo)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lfdo20/aleatorer/issues"
+  },
+  "homepage": "https://github.com/lfdo20/aleatorer#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.18.1",
+    "eslint-config-google": "^0.9.1",
+    "mocha": "^5.0.1",
+    "nyc": "^11.4.1",
+    "rimraf": "^2.6.2",
+    "sinon": "^4.4.1",
+    "sinon-chai": "^2.14.0",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "dependencies": {}
+}
